@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.todo-wrapper {
+    max-width: 50%;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.todo-wrapper h3 {
+    margin: 10px 0;
+}
+
+#todo-form {
+    margin: 10px 0;   
+}
+
+#todo-list {
+    padding-left: 0;
+}
+
+.todo-item {
+    display: flex;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.delete-todo {
+    margin-left: auto;
+}
+
+.todo-completed {
+    opacity: .5;
+    background-color: black;
+    color: white;
+    text-decoration: line-through;
+}
