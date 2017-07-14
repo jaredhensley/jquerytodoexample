@@ -28,7 +28,7 @@ $(document).ready(function () {
         renderTodos(state);
     }
 
-    function toggleTodoStatus(state,id) {
+    function toggleTodoStatus(state, id) {
         state.todos[id].completed = !state.todos[id].completed;
     }
 
@@ -40,13 +40,12 @@ $(document).ready(function () {
                    return state.todos[index].completed ? 'todo-completed' : ''; 
                 })
                 .text(todo.description)
-                .attr("id", index)
+                .data("todo-id", index)
                 .append('<i class="fa fa-trash-o delete-todo"></i>');
         });
 
-        listItems.forEach(function (item) {
-            $todoList.append(item);
-        })
+        // Append once rather than in a loop. 
+        $todoList.append(listItems);
     }
 
     //event listeners
@@ -63,14 +62,14 @@ $(document).ready(function () {
     });
 
     $todoList.on('click', 'li', function() {
-        var id = parseInt($(this).attr('id'));
+        var id = parseInt($(this).data('todo-id'));
         toggleTodoStatus(state, id);
         $(this).toggleClass('todo-completed');
     });
 
     $todoList.on('click', '.delete-todo', function(event) {
         event.stopPropagation();
-        var id = parseInt($(this).closest('li').attr('id'));
+        var id = parseInt($(this).closest('li').data('todo-id'));
         deleteTodo(state, id);
     });
 
